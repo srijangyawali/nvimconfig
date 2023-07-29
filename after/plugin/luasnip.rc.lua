@@ -4,10 +4,6 @@ if (not status) then
   return
 end
 
-<<<<<<< HEAD
-local ls = require "luasnip"
-=======
->>>>>>> master
 local types = require "luasnip.util.types"
 
 ls.config.set_config {
@@ -36,12 +32,8 @@ ls.add_snippets("javascriptreact", {
   ls.parser.parse_snippet("rce", "class $1 extends React.Component {\n  render() {\n    return $2;}}")
 })
 ls.add_snippets("html", {
-<<<<<<< HEAD
-  ls.parser.parse_snippet("!", "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>$1</title>\n</head>\n<body>\n$0\n</body>\n</html>")
-=======
   ls.parser.parse_snippet("!",
     "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>$1</title>\n</head>\n<body>\n$0\n</body>\n</html>")
->>>>>>> master
 })
 
 -- Keymaps
@@ -57,13 +49,8 @@ end, { silent = true })
 -- <c-j> is my jump backwards key.
 -- this always moves to the previous item within the snippet
 vim.keymap.set({ "i", "s" }, "<c-j>", function()
-<<<<<<< HEAD
-  if ls.jumpable( -1) then
-    ls.jump( -1)
-=======
   if ls.jumpable(-1) then
     ls.jump(-1)
->>>>>>> master
   end
 end, { silent = true })
 

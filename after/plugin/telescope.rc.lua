@@ -39,28 +39,12 @@ telescope.setup {
           end
         }
       }
-<<<<<<< HEAD
     }
-=======
     },
-    recent_files = {},
->>>>>>> master
   }
-}
-telescope.load_extension('file_browser')
 
-<<<<<<< HEAD
+
 local opts = { noremap = true, silent = true }
-vim.keymap.set('n', ';f', '<cmd> lua require("telescope.builtin").find_files({ no_ignore = false, hidden = true})<cr>',
-  opts)
-vim.keymap.set('n', ';r', '<cmd> lua require("telescope.builtin").live_grep()<cr>',
-  opts)
-vim.keymap.set('n', '////', '<cmd> lua require("telescope.builtin").buffers()<cr>',
-  opts)
-vim.keymap.set('n', '<C-t>',
-  '<cmd> lua require("telescope").extensions.file_browser.file_browser({path = "%:p:h", cwd = Telescope_buffer_dir(), respect_git_ignore = false, hidden = true, grouped = true, initial_mode = "normal"})<cr>',
-  opts)
-=======
 -- local opts = { noremap = true, silent = true }
 -- vim.keymap.set('n', ';f', '<cmd> lua require("telescope.builtin").find_files({ no_ignore = false, hidden = true})<cr>',
 --   opts)
@@ -71,7 +55,6 @@ vim.keymap.set('n', '<C-t>',
 -- vim.keymap.set('n', '<C-t>',
 --   '<cmd> lua require("telescope").extensions.file_browser.file_browser({path = "%:p:h", cwd = Telescope_buffer_dir(), respect_git_ignore = false, hidden = true, grouped = true, initial_mode = "normal"})<cr>',
 --   opts)
->>>>>>> master
 
 
 -- For searching in the current working project

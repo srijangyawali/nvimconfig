@@ -40,11 +40,7 @@ nvim_lsp.lua_ls.setup {
   }
 }
 -- Snippet support for css
-<<<<<<< HEAD
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-=======
 local capabilities = protocol.make_client_capabilities()
->>>>>>> master
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 
@@ -69,11 +65,8 @@ nvim_lsp.pylsp.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
-<<<<<<< HEAD
-=======
 
 nvim_lsp.zls.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
->>>>>>> master
