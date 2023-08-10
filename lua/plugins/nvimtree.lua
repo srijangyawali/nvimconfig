@@ -7,6 +7,12 @@ return {
 	config = function()
 		require("nvim-tree").setup({
 			sync_root_with_cwd = true,
+			actions = {
+				change_dir = {
+					enable = true,
+					global = true,
+				},
+			},
 			view = {
 				side = "right",
 				float = {
@@ -35,6 +41,6 @@ return {
 		})
 	end,
 	keys = {
-		{ "<leader>tf", "<cmd>:NvimTreeToggle<cr>", desc = "Open nvim tree" },
+		{ "<leader>.", "<cmd>:NvimTreeToggle<cr>", desc = "Open nvim tree" },
 	},
 }

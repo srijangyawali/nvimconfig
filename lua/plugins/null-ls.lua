@@ -8,8 +8,9 @@ return {
 		local null_ls = require("null-ls")
 		local b = null_ls.builtins
 		local sources = {
-			b.formatting.clang_format,
-			b.formatting.stylua,
+			b.formatting.clang_format, --formatter for c++
+			b.formatting.stylua, -- formatter for lua files
+			b.formatting.prettierd, -- formatter for html, css
 		}
 		null_ls.setup({
 			on_init = function(new_client, _)

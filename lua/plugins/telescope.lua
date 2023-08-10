@@ -1,14 +1,25 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	vent = "VimEnter",
+	event = "VimEnter",
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
 		{ "ahmedkhalf/project.nvim" },
 	},
 	config = function()
 		require("telescope").setup({
+			extensions = {
+				file_browser = {
+					theme = "ivy",
+					hijack_netrw = true,
+				},
+			},
 			defaults = {
 				initial_mode = "normal",
+				mappings = {
+					n = {
+					['q'] = require("telescope.actions").close,
+				}
+				},
 			},
 		})
 		require("project_nvim").setup({})

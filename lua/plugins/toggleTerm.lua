@@ -11,9 +11,6 @@ return {
 			presist_size = true,
 			direction = "horizontal",
 			autochdir = true,
-			winbar = {
-				enabled = true,
-			},
 		})
 	end,
 }

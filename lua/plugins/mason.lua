@@ -27,6 +27,9 @@ return {
 		require("lspconfig")["lua_ls"].setup({
 			capabilities = capabilities,
 		})
+		require("lspconfig")["html"].setup({
+			capabilities = capabilities,
+		})
 		capabilities.offsetEncoding = { "utf-16" }
 		require("lspconfig")["clangd"].setup({
 			capabilities = capabilities,
