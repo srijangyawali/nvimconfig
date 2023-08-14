@@ -50,11 +50,11 @@ return {
 				colored = true,
 			},
 			sections = {
-				lualine_a = { 'mode' },
+				lualine_a = { "mode" },
 				lualine_b = { "branch" },
-				lualine_c = { diagnostics },
+				lualine_c = { diagnostics, diff },
 				lualine_x = { filename },
-				lualine_y = { filetype, location },
+				lualine_y = { filetype, location, "datetime" },
 				lualine_z = { "progress" },
 			},
 		})

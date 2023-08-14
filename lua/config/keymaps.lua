@@ -28,6 +28,11 @@ keymap("n", "<leader>va", "gg0vG$", opts)
 keymap("n", "<leader>bn", ":bnext<cr>", opts)
 keymap("n", "<leader>bp", ":bprevious<cr>", opts)
 
+-- keymaps for debugging, here becuase we have F keys.
+keymap("n", "<F1>", "<cmd>DapStepInto<cr>", opts)
+keymap("n", "<F2>", "<cmd>DapStepOut<cr>", opts)
+keymap("n", "<F3>", "<cmd>DapStepOver<cr>", opts)
+
 -- function for floating window for toggle term
 local Terminal = require("toggleterm.terminal").Terminal
 local toggle_float = function()
@@ -59,6 +64,8 @@ require("which-key").register({
 		name = "+open",
 		t = { "<cmd>ToggleTerm<cr>", "Split below for terminal" },
 		f = { toggle_float, "Floating terminal" },
+		r = { '<cmd>TermExec cmd="ranger" direction="float"<cr>', "Ranger" },
+		-- To run this command ranger should be installed "sudo apt install ranger"
 	},
 
 	["<leader>m"] = {
@@ -69,5 +76,11 @@ require("which-key").register({
 
 	["<leader>"] = {
 		c = { require("nvim-tree.api").tree.change_root_to_node, "Change the current node as root" },
+	},
+
+	["<leader>d"] = {
+		name = "+debugging",
+		b = { "<cmd>DapToggleBreakpoint<cr>", "Add a breakpoint" },
+		r = { "<cmd>DapContinue<cr>", "Start or continue debugger" },
 	},
 })

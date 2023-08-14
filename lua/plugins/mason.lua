@@ -17,6 +17,7 @@ return {
 			ensure_installed = {
 				"clangd",
 				"lua_ls",
+				-- "codelldb", manually installed
 			},
 			-- All these plugins are installed in ~/.local/share/nvim/mason/packages
 		})

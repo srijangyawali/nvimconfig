@@ -17,12 +17,12 @@ return {
 				initial_mode = "normal",
 				mappings = {
 					n = {
-					['q'] = require("telescope.actions").close,
-				}
+						["q"] = require("telescope.actions").close,
+					},
 				},
 			},
 		})
-		require("project_nvim").setup({})
+				require("project_nvim").setup({})
 		require("telescope").load_extension("projects")
 	end,
 	cmd = "Telescope",
