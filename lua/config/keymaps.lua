@@ -36,15 +36,46 @@ keymap("n", "<F3>", "<cmd>DapStepOver<cr>", opts)
 -- function for floating window for toggle term
 local Terminal = require("toggleterm.terminal").Terminal
 local toggle_float = function()
-	local float = Terminal:new({ direction = "float" })
+	local float = Terminal:new({ direction = "float", dir = "%:p:h" })
 	return float:toggle()
 end
+
+-- I installed project.nvim due to which the cwd of nvim stuck to the directory of the first opened file. While project was installed, the functions written below are the work around to open telescope and terminal in the directory of the current buffer.
+
+-- opening normal terminal on path of current buffer
+-- local toggle_term = function()
+-- 	local term = Terminal:new({ direction = "horizontal", dir = "%:p:h" })
+-- 	return term:toggle()
+-- end
+--
+-- opening find files on path of current buffer
+-- local findFiles = function()
+-- 	local bufPath = vim.fn.expand("%:p:h")
+-- 	vim.fn.execute("cd" .. bufPath)
+-- 	require("telescope.builtin").find_files()
+-- end
+--
+-- opening live grep on path of current buffer
+-- local liveGrep = function()
+-- 	local bufPath = vim.fn.expand("%:p:h")
+-- 	vim.fn.execute("cd" .. bufPath)
+-- 	require("telescope.builtin").live_grep()
+-- end
+--
+-- for dap continue
+-- local dapContinue = function()
+-- 	local bufPath = vim.fn.expand("%:p:h")
+-- 	vim.fn.execute("cd" .. bufPath)
+-- 	require("dap").continue()
+-- end
 
 -- insert lazy git here
 
 require("which-key").register({
 	["<leader>f"] = {
 		name = "+files",
+		-- f = { findFiles, "open find files" },
+		-- l = { liveGrep, "open live grep" },
 	},
 	["<leader>b"] = {
 		name = "+buffers",
@@ -82,5 +113,6 @@ require("which-key").register({
 		name = "+debugging",
 		b = { "<cmd>DapToggleBreakpoint<cr>", "Add a breakpoint" },
 		r = { "<cmd>DapContinue<cr>", "Start or continue debugger" },
+		-- r = { dapContinue, "Start or continue debugger" },
 	},
 })

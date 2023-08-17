@@ -13,6 +13,7 @@ opt.formatoptions = "jcroqlnt"
 opt.grepformat = "%f:%l:%c:%m" -- filname, line number, column number, message
 opt.hlsearch = true
 opt.ignorecase = true
+-- opt.autochdir = true
 --opt.cursorline = true
 opt.iskeyword:append("-") -- treats words sepearated with - a single word
 opt.iskeyword:append("_")
