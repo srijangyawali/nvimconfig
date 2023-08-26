@@ -13,8 +13,8 @@ opt.formatoptions = "jcroqlnt"
 opt.grepformat = "%f:%l:%c:%m" -- filname, line number, column number, message
 opt.hlsearch = true
 opt.ignorecase = true
--- opt.autochdir = true
---opt.cursorline = true
+opt.autochdir = true
+opt.cursorline = true
 opt.iskeyword:append("-") -- treats words sepearated with - a single word
 opt.iskeyword:append("_")
 opt.mouse = "a"
@@ -36,6 +36,7 @@ opt.writebackup = false
 vim.cmd([[ 
 filetype plugin indent on
 syntax on
+hi NotifyBackground guibg = #000000
 ]])
 
 vim.diagnostic.config({
@@ -49,3 +50,6 @@ vim.diagnostic.config({
 		prefix = "",
 	},
 })
+
+-- vim.g.mkdp_auto_start = 1
+-- vim.g.mkdp_auto_close = 1

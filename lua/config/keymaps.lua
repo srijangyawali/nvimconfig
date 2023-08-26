@@ -1,6 +1,10 @@
 local keymap = vim.keymap.set
 local opts = { silent = true }
 
+-- Logical line movements
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
+
 -- Emacs like window navigation
 keymap("n", "<leader>wh", "<C-w>h", opts)
 keymap("n", "<leader>wl", "<C-w>l", opts)
@@ -16,10 +20,6 @@ keymap("n", "<leader>wL", "<C-w>L", opts)
 keymap("n", "<leader>wK", "<C-w>K", opts)
 keymap("n", "<leader>wJ", "<C-w>J", opts)
 keymap("n", "<leader>wH", "<C-w>H", opts)
-
--- Moving the line up
-keymap("n", "<C-j>", "ddp", opts)
-keymap("n", "<C-k>", "ddkP", opts)
 
 -- selecting the whole content
 keymap("n", "<leader>va", "gg0vG$", opts)
@@ -39,6 +39,8 @@ local toggle_float = function()
 	local float = Terminal:new({ direction = "float", dir = "%:p:h" })
 	return float:toggle()
 end
+
+-- local Peek = require("peek").open
 
 -- I installed project.nvim due to which the cwd of nvim stuck to the directory of the first opened file. While project was installed, the functions written below are the work around to open telescope and terminal in the directory of the current buffer.
 
@@ -79,7 +81,7 @@ require("which-key").register({
 	},
 	["<leader>b"] = {
 		name = "+buffers",
-		d = { "<cmd>bdelete<cr>", "Delete current buffer" },
+		c = { "<cmd>bdelete<cr>", "Delete current buffer" },
 	},
 	["<leader>v"] = {
 		name = "+select",
@@ -115,4 +117,9 @@ require("which-key").register({
 		r = { "<cmd>DapContinue<cr>", "Start or continue debugger" },
 		-- r = { dapContinue, "Start or continue debugger" },
 	},
+
+	-- ["<leader>;"] = {
+	-- 	name = "+markdown",
+	-- 	p = { Peek, "Open markdown preview" },
+	-- },
 })

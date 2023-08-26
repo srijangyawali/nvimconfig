@@ -31,6 +31,9 @@ return {
 		require("lspconfig")["html"].setup({
 			capabilities = capabilities,
 		})
+		require("lspconfig")["texlab"].setup({
+			capabilities = capabilities,
+		}) 
 		capabilities.offsetEncoding = { "utf-16" }
 		require("lspconfig")["clangd"].setup({
 			capabilities = capabilities,
