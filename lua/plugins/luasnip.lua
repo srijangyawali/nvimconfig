@@ -25,6 +25,15 @@ return {
 		ls.add_snippets("markdown", {
 			ls.parser.parse_snippet("<toggle", "<details> \n<summary> $1 </summary>\n$0 \n</details>"),
 			ls.parser.parse_snippet("<question", "> ❓ $0"),
+			ls.parser.parse_snippet(
+				"<def",
+				'<span style="padding: 5px; background-color: #00808044 ; display:block; border: 1px solid teal; border-radius: 10px">🌲 $0 </span>'
+			),
+			ls.parser.parse_snippet(
+				"<note",
+				'<span style="padding: 5px; background-color: #900C3F55 ; display:block; border: 1px solid #900C3F; border-radius: 10px">💡 $0 </span>'
+			),
+			ls.parser.parse_snippet("<hil", '<mark style="background-color: #FFECAF; padding: 5px;">$1</mark>$0'),
 		})
 
 		ls.add_snippets("cpp", {

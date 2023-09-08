@@ -40,7 +40,7 @@ return {
 
 		require("lualine").setup({
 			options = {
-				theme = catppuccin,
+				theme = 'nord',
 				globalstatus = true,
 				icons_enabled = true,
 				disabled_filetypes = { "alpha", "dashboard" },

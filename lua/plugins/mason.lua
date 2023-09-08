@@ -27,13 +27,24 @@ return {
 
 		require("lspconfig")["lua_ls"].setup({
 			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+				},
+			},
 		})
 		require("lspconfig")["html"].setup({
 			capabilities = capabilities,
 		})
 		require("lspconfig")["texlab"].setup({
 			capabilities = capabilities,
-		}) 
+		})
+
+		require("lspconfig")["pyright"].setup({
+			capabilities = capabilities,
+		})
 		capabilities.offsetEncoding = { "utf-16" }
 		require("lspconfig")["clangd"].setup({
 			capabilities = capabilities,

@@ -17,7 +17,7 @@ require("lazy").setup("plugins", {
 
 	},
 	defaults = {
-		lazy = true, 
+		lazy = true,
 		version = false, -- use the specific version of the package.
 	},
 	install = {
