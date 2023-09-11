@@ -16,13 +16,13 @@ return {
 			},
 			update_focused_file = {
 				enable = true,
-				update_root = true,
+				update_root = false,
 			},
 			view = {
 				side = "right",
 				centralize_selection = true,
 				float = {
-					enable = true,
+					enable = false,
 					quit_on_focus_loss = true,
 					open_win_config = {
 						relative = "editor",
@@ -44,6 +44,14 @@ return {
 					enable = true,
 				},
 			},
+		})
+		vim.api.nvim_create_autocmd("BufEnter", {
+			nested = true,
+			callback = function()
+				if #vim.api.nvim_list_wins() == 1 and require("nvim-tree.utils").is_nvim_tree_buf() then
+					vim.cmd("quit")
+				end
+			end,
 		})
 	end,
 	keys = {

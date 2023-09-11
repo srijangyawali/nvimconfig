@@ -3,10 +3,14 @@ return {
 	event = { "VimEnter" },
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		{ "nvim-tree/nvim-web-devicons" },
 	},
 
 	config = function()
-		require("telescope").setup({
+		local telescope = require("telescope")
+		local actions = require("telescope.actions")
+		telescope.setup({
 			extensions = {
 				file_browser = {
 					theme = "ivy",
@@ -17,18 +21,19 @@ return {
 				initial_mode = "normal",
 				mappings = {
 					n = {
-						["q"] = require("telescope.actions").close,
+						["q"] = actions.close,
 					},
 				},
 			},
 		})
-	end,
-	cmd = "Telescope",
+		telescope.load_extension("fzf")
 
-	keys = {
-		{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-		{ "<leader>fl", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
-		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Find recent files" },
-		{ "<leader>bi", "<cmd>Telescope buffers<cr>", desc = "Show all active buffers" },
-	},
+		--set keymaps
+		local keymap = vim.keymap
+		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find in cwd" })
+		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
+		keymap.set("n", "<leader>fu", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+		keymap.set("n", "<leader>bi", "<cmd>Telescope buffers<cr>", { desc = "Show all active buffers" })
+	end,
 }
