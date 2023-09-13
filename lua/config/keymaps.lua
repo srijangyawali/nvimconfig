@@ -80,12 +80,11 @@ require("which-key").register({
 	["<leader>f"] = {
 		name = "+files",
 		c = { "<cmd>e /home/creatio/.config/nvim/init.lua<cr>", "Open the init.lua file" },
-		-- f = { findFiles, "open find files" },
-		-- l = { liveGrep, "open live grep" },
 	},
 	["<leader>b"] = {
 		name = "+buffers",
-		c = { "<cmd>bdelete<cr>", "Delete current buffer" },
+		c = { ":NvimTreeClose<cr><cmd>bdelete<cr>", "Delete current buffer" },
+		-- whenever I tried to close a buffer with nvim tree open, it closed the whole neovim window
 	},
 	["<leader>v"] = {
 		name = "+select",
@@ -115,15 +114,17 @@ require("which-key").register({
 		c = { require("nvim-tree.api").tree.change_root_to_node, "Change the current node as root" },
 	},
 
+	["<leader>g"] = {
+		name = "+lsp_integrations",
+	},
+
+	["<leader>t"] = {
+		name = "+toggle",
+	},
+
 	["<leader>d"] = {
 		name = "+debugging",
 		b = { "<cmd>DapToggleBreakpoint<cr>", "Add a breakpoint" },
 		r = { "<cmd>DapContinue<cr>", "Start or continue debugger" },
-		-- r = { dapContinue, "Start or continue debugger" },
 	},
-
-	-- ["<leader>;"] = {
-	-- 	name = "+markdown",
-	-- 	p = { Peek, "Open markdown preview" },
-	-- },
 })

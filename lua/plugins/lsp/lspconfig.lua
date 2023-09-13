@@ -13,47 +13,50 @@ return {
 
 		local opts = { noremap = true, silent = true }
 
-		local on_attach = function(client, bufnr)
-			opts.buffer = bufnr
+		local on_attach = function()
+			keymap.set("n", "<leader>gh", vim.lsp.buf.hover, { buffer = 0, desc = "Hover documentation" }, opts)
 
-			opts.desc = "Show LSP references"
-			keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+			keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = 0, desc = "Go to definiton" }, opts)
+			-- We can use CTRL-T to go back
 
-			opts.desc = "Go to declaration"
-			keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+			keymap.set(
+				"n",
+				"<leader>gi",
+				vim.lsp.buf.implementation,
+				{ buffer = 0, desc = "Go to implementation" },
+				opts
+			)
 
-			opts.desc = "Show LSP definitions"
-			keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+			keymap.set(
+				"n",
+				"<leader>dj",
+				vim.diagnostic.goto_next,
+				{ buffer = 0, desc = "Go to next diagnostic" },
+				opts
+			)
 
-			opts.desc = "Show LSP implementations"
-			keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+			keymap.set(
+				"n",
+				"<leader>dk",
+				vim.diagnostic.goto_prev,
+				{ buffer = 0, desc = "Go to previous diagnostic" },
+				opts
+			)
 
-			opts.desc = "Show LSP type definitions"
-			keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+			keymap.set(
+				"n",
+				"<leader>gT",
+				vim.lsp.buf.type_definition,
+				{ buffer = 0, desc = "Go to type definiton" },
+				opts
+			)
 
-			opts.desc = "See available code actions"
-			keymap.set({ "n", "v" }, "<leader>ca", "vim.lsp.buf.code_action", opts)
+			keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Smart rename" }, opts)
 
-			opts.desc = "Smart rename"
-			keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
-			opts.desc = "Show buffer diagnostics"
-			keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+			keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "See available code actions" }, opts)
 
 			opts.desc = "Show line diagnostics"
-			keymap.set("n", "<leader>d", "vim.diagnostics.open_float", opts)
-
-			opts.desc = "Goto next diagnostics"
-			keymap.set("n", "]d", "vim.diagnostics.goto_next", opts)
-
-			opts.desc = "Goto previous diagnostics"
-			keymap.set("n", "[d", "vim.diagnostics.goto_prev", opts)
-
-			opts.desc = "Show documentation for what is under the cursor"
-			keymap.set("n", "<leader>k", "vim.lsp.buf.hover", opts)
-
-			opts.desc = "Restart LSP"
-			keymap.set("n", "<leader>rs", ":LSPRestart<CR>", opts)
+			keymap.set("n", "<leader>gl", vim.diagnostic.open_float, { desc = "Show line diagnostics" }, opts)
 		end
 
 		-- local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -65,7 +68,7 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		require("lspconfig")["lua_ls"].setup({
+		lspconfig["lua_ls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {
@@ -77,28 +80,28 @@ return {
 			},
 		})
 
-		require("lspconfig")["html"].setup({
+		lspconfig["html"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
-		require("lspconfig")["texlab"].setup({
+		lspconfig["texlab"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
-		require("lspconfig")["tsserver"].setup({
+		lspconfig["tsserver"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
-		require("lspconfig")["pyright"].setup({
+		lspconfig["pyright"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		capabilities.offsetEncoding = { "utf-16" }
-		require("lspconfig")["clangd"].setup({
+		lspconfig["clangd"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
