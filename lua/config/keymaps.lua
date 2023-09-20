@@ -120,6 +120,14 @@ require("which-key").register({
 
 	["<leader>t"] = {
 		name = "+toggle",
+		t = { "<cmd>TroubleToggle<cr>", "Toggle trouble window" },
+	},
+
+	["<leader>h"] = {
+		name = "+Git",
+		b = { "<cmd> Gitsigns blame_line<cr>", "Blane line" },
+		d = { "<cmd> Gitsigns diffthis<cr>", "Differential view" },
+		p = { "<cmd> Gitsigns preview_hunk<cr>", "Preview the difference" },
 	},
 
 	["<leader>d"] = {

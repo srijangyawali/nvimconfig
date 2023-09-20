@@ -55,7 +55,6 @@ return {
 
 			keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "See available code actions" }, opts)
 
-			opts.desc = "Show line diagnostics"
 			keymap.set("n", "<leader>gl", vim.diagnostic.open_float, { desc = "Show line diagnostics" }, opts)
 		end
 
@@ -68,42 +67,35 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		lspconfig["lua_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
+		require("mason-lspconfig").setup_handlers({
+			function(server_name)
+				require("lspconfig")[server_name].setup({
+					on_attach = on_attach,
+					capabilities = capabilities,
+				})
+			end,
+
+			["lua_ls"] = function()
+				lspconfig["lua_ls"].setup({
+					capabilities = capabilities,
+					on_attach = on_attach,
+					settings = {
+						Lua = {
+							diagnostics = {
+								globals = { "vim" },
+							},
+						},
 					},
-				},
-			},
-		})
+				})
+			end,
 
-		lspconfig["html"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lspconfig["texlab"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lspconfig["tsserver"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lspconfig["pyright"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		capabilities.offsetEncoding = { "utf-16" }
-		lspconfig["clangd"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
+			["clangd"] = function()
+				capabilities.offsetEncoding = { "utf-16" }
+				lspconfig["clangd"].setup({
+					capabilities = capabilities,
+					on_attach = on_attach,
+				})
+			end,
 		})
 
 		vim.api.nvim_exec_autocmds("FileType", {}) -- to automatically open lsp in the first file.

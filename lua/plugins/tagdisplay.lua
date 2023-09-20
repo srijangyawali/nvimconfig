@@ -3,6 +3,7 @@ return {
 	config = function()
 		require("symbols-outline").setup({
 			wrap = true,
+			width = 20,
 		})
 	end,
 	keys = {

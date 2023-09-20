@@ -5,6 +5,7 @@ return {
 		{ "nvim-lua/plenary.nvim" },
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{ "nvim-tree/nvim-web-devicons" },
+		{ "nvim-telescope/telescope-file-browser.nvim" },
 	},
 
 	config = function()
@@ -35,5 +36,6 @@ return {
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fu", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>bi", "<cmd>Telescope buffers<cr>", { desc = "Show all active buffers" })
+		-- keymap.set("n", "<leader>.", "<cmd>Telescope file_browser<cr>", { desc = "File browser" })
 	end,
 }

@@ -35,12 +35,12 @@ return {
 			"filename",
 			file_status = true,
 			newfile_status = true,
-			path = 3,
+			path = 0,
 		}
 
 		require("lualine").setup({
 			options = {
-				theme = 'nord',
+				theme = "nord",
 				globalstatus = true,
 				icons_enabled = true,
 				disabled_filetypes = { "alpha", "dashboard" },
@@ -53,7 +53,7 @@ return {
 				lualine_a = { "mode" },
 				lualine_b = { "branch" },
 				lualine_c = { diagnostics, diff },
-				lualine_x = { filename },
+				lualine_x = {filename},
 				lualine_y = { filetype, location, "datetime" },
 				lualine_z = { "progress" },
 			},

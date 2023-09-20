@@ -19,7 +19,7 @@ return {
 				update_root = false,
 			},
 			view = {
-				side = "right",
+				side = "left",
 				centralize_selection = true,
 				float = {
 					enable = false,
@@ -39,6 +39,14 @@ return {
 			},
 			renderer = {
 				highlight_git = true,
+				icons = {
+					glyphs = {
+						folder = {
+							arrow_closed = "⮞",
+							arrow_open = "⮟",
+						},
+					},
+				},
 				root_folder_label = ":~:.",
 				indent_markers = {
 					enable = true,

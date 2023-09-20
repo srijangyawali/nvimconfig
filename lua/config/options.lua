@@ -40,7 +40,7 @@ hi NotifyBackground guibg = #000000
 ]])
 
 vim.diagnostic.config({
-	virtual_text = false, -- default true
+	virtual_text = true, -- default true
 	float = {
 		focusable = true,
 		style = "minimal",
