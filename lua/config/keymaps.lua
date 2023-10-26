@@ -33,9 +33,6 @@ keymap("n", "<F1>", "<cmd>DapStepInto<cr>", opts)
 keymap("n", "<F2>", "<cmd>DapStepOut<cr>", opts)
 keymap("n", "<F3>", "<cmd>DapStepOver<cr>", opts)
 
--- mapping general keybindings for nomral tasks which I am used to.
-
-vim.api.nvim_set_keymap("i", "<C-j>", "<Esc>dbxi", opts)
 -- function for floating window for toggle term
 local Terminal = require("toggleterm.terminal").Terminal
 local toggle_float = function()

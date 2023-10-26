@@ -14,9 +14,9 @@ opt.grepformat = "%f:%l:%c:%m" -- filname, line number, column number, message
 opt.hlsearch = true
 opt.ignorecase = true
 opt.autochdir = true
-opt.cursorline = true
-opt.iskeyword:append("-") -- treats words sepearated with - a single word
-opt.iskeyword:append("_")
+opt.cursorline = false
+-- opt.iskeyword:append("-") -- treats words sepearated with - a single word
+-- opt.iskeyword:append("_")
 opt.mouse = "a"
 opt.number = true
 opt.relativenumber = true
@@ -32,6 +32,7 @@ opt.tabstop = 2
 opt.termguicolors = true
 opt.wrap = true
 opt.writebackup = false
+opt.equalalways = true
 
 vim.cmd([[ 
 filetype plugin indent on
@@ -40,7 +41,7 @@ hi NotifyBackground guibg = #000000
 ]])
 
 vim.diagnostic.config({
-	virtual_text = true, -- default true
+	virtual_text = false, -- default true
 	float = {
 		focusable = true,
 		style = "minimal",
