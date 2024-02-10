@@ -25,7 +25,7 @@ function M.config()
     code_style = {
       comments = "italic",
       keywords = 'italic',
-      functions = "bold,italic",
+      functions = "italic",
       strings = "none",
       variables = "italic",
     },

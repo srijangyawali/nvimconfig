@@ -42,6 +42,7 @@ spec "user.extras.fidget"
 spec "user.extras.harpoon"
 spec "user.extras.illuminate"
 -- spec "user.lab"
+spec "user.extras.markdown-preview"
 spec "user.extras.modicator"
 spec "user.extras.navic"
 -- get real tabs using tabby
