@@ -53,10 +53,10 @@ spec "user.extras.todoComments"
 spec "user.extras.ufo"
 
 -- lspsetting plugins
+spec "user.lspsettings.tabnine"
 spec "user.lspsettings.cmp"
 spec "user.lspsettings.lspconfig"
 spec "user.lspsettings.none-ls"
--- spec "user.lspsettings.tabnine"
 
 -- this has to be at the end
 require "user.lazy"

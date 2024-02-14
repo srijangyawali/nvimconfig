@@ -39,6 +39,9 @@ local M = {
 		{
 			"tzachar/cmp-tabnine",
 		},
+		{
+			"onsails/lspkind.nvim",
+		},
 	},
 	event = "BufEnter",
 }
@@ -60,6 +63,7 @@ function M.config()
 	end
 
 	local icons = require("user.icons")
+	local lspkind = require("lspkind")
 
 	cmp.setup({
 		snippet = {
@@ -123,30 +127,70 @@ function M.config()
 				"s",
 			}),
 		}),
+		-- formatting = {
+		-- 	fields = { "kind", "abbr", "menu" }, -- vscode like layout
+		-- 	format = function(entry, vim_item)
+		-- 		vim_item.kind = icons.kind[vim_item.kind]
+		-- 		vim_item.menu = ({
+		-- 			nvim_lsp = "",
+		-- 			nvim_lua = "",
+		-- 			luasnip = "",
+		-- 			buffer = "",
+		-- 			path = "",
+		-- 			emoji = "",
+		-- 		})[entry.source.name]
+		--
+		-- 		if entry.source.name == "emoji" then
+		-- 			vim_item.kind = icons.misc.Smiley
+		-- 			vim_item.kind_hl_group = "CmpItemKindEmoji"
+		-- 		end
+		--
+		-- 		if entry.source.name == "cmp_tabnine" then
+		-- 			vim_item.kind = icons.misc.Robot
+		-- 			vim_item.kind_hl_group = "CmpItemKindTabnine"
+		-- 		end
+		-- 		return vim_item
+		-- 	end,
+		-- },
 		formatting = {
+      expandable_indicator = true,
 			fields = { "kind", "abbr", "menu" }, -- vscode like layout
-			format = function(entry, vim_item)
-				vim_item.kind = icons.kind[vim_item.kind]
-				vim_item.menu = ({
-					nvim_lsp = "",
-					nvim_lua = "",
-					luasnip = "",
-					buffer = "",
-					path = "",
-					emoji = "",
-				})[entry.source.name]
-
-				if entry.source.name == "emoji" then
-					vim_item.kind = icons.misc.Smiley
-					vim_item.kind_hl_group = "CmpItemKindEmoji"
-				end
-
-				if entry.source.name == "cmp_tabnine" then
-					vim_item.kind = icons.misc.Robot
-					vim_item.kind_hl_group = "CmpItemKindTabnine"
-				end
-				return vim_item
-			end,
+			format = lspkind.cmp_format({
+				mode = "text_symbol",
+				kind_order = {
+					"Method",
+					"Function",
+					"Constructor",
+					"Field",
+					"Variable",
+					"Class",
+					"Text",
+					"Interface",
+					"Module",
+					"Property",
+					"Unit",
+					"Value",
+					"Enum",
+					"Keyword",
+					"Snippet",
+					"Color",
+					"File",
+					"Reference",
+					"Folder",
+					"EnumMember",
+					"Constant",
+					"Struct",
+					"Event",
+					"Operator",
+					"TypeParameter",
+				},
+				maxwidth = 50,
+				ellipsis_char = "...",
+				show_labelDetails = true,
+				before = function(entry, vim_item)
+					return vim_item
+				end,
+			}),
 		},
 		sources = {
 			{ name = "nvim_lsp" },
