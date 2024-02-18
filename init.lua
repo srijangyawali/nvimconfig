@@ -51,6 +51,7 @@ spec "user.extras.neoscroll"
 spec "user.extras.noice"
 spec "user.extras.todoComments"
 spec "user.extras.ufo"
+spec "user.extras.vim-tmux-navigator"
 
 -- lspsetting plugins
 spec "user.lspsettings.tabnine"

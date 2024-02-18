@@ -12,11 +12,16 @@ keymap("n", "<C-i>", "<C-i>", opts)
 
 
 -- Better window navigation
-keymap("n", "<leader>wh", "<C-w>h", opts)
-keymap("n", "<leader>wj", "<C-w>j", opts)
-keymap("n", "<leader>wk", "<C-w>k", opts)
-keymap("n", "<leader>wl", "<C-w>l", opts)
+-- Using Vim tmux navigation
+-- keymap("n", "<leader>wh", "<C-w>h", opts)
+-- keymap("n", "<leader>wj", "<C-w>j", opts)
+-- keymap("n", "<leader>wk", "<C-w>k", opts)
+-- keymap("n", "<leader>wl", "<C-w>l", opts)
 --keymap("n", "<m-tab>", "<c-6>", opts)
+
+-- Splitting window
+keymap("n", "<leader>wh", ":split<CR>", opts)
+keymap("n", "<leader>wv", ":vsplit<CR>", opts)
 
 -- center everything we search
 keymap("n", "n", "nzz", opts)
